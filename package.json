@@ -1,0 +1,42 @@
+{
+  "name": "robot-army",
+  "version": "1.0.0",
+  "description": "Testing library for iOS",
+  "main": "index.js",
+  "scripts": {
+    "lint": "jscs --esnext --fix src tests *.js; eslint src *.js",
+    "test": "mocha --colors --compilers js:babel-core/register tests",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khan/robot-army.git"
+  },
+  "keywords": [
+    "iOS",
+    "testing",
+    "tdd",
+    "robot"
+  ],
+  "author": "Jared Forsyth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Khan/robot-army/issues"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "chai": "^3.3.0",
+    "eslint": "^1.7.0",
+    "eslint-plugin-react": "^3.5.1",
+    "jscs": "^2.3.2",
+    "jscs-import-spaces": "^1.0.0",
+    "mocha": "^2.3.3"
+  },
+  "dependencies": {
+    "wd": "^0.3.12",
+    "axios": "^0.7.0"
+  },
+  "homepage": "https://github.com/Khan/robot-army#readme"
+}

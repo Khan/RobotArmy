@@ -1,0 +1,13 @@
+{
+	"preset": "node-style-guide",
+	"validateQuoteMarks": {
+		"mark": "\"",
+		"escape": true
+	},
+	"plugins": ["import-spaces"],
+	"requireImportSpaces": true,
+	"validateIndentation": 4,
+	"requireSemicolons": true,
+	"requireSpacesInsideObjectBrackets": {"allExcept": ["}"]},
+	"requireCamelCaseOrUpperCaseIdentifiers": false
+}
