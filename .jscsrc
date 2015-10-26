@@ -9,5 +9,6 @@
 	"validateIndentation": 4,
 	"requireSemicolons": true,
 	"requireSpacesInsideObjectBrackets": {"allExcept": ["}"]},
+	"requireCapitalizedComments": false,
 	"requireCamelCaseOrUpperCaseIdentifiers": false
 }

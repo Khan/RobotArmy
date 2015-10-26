@@ -35,6 +35,7 @@ type Args = {
   },
   simRetries?: number,
   installRetries?: number,
+  webdriverTimeoutMs?: number,
 };
 
 type Result = {
@@ -42,6 +43,8 @@ type Result = {
   simulator: SimResult,
   wdAgent: ChildProcess,
 };
+
+const defaultWebdriverTimeoutMs = 10 * 1000;
 
 export default async ({
     port,
@@ -57,11 +60,16 @@ export default async ({
     },
     // TODO(jared): uncomment these once flow understands default values in
     // destructured arguments
-    simRetries, // SimRetries: simRetries = 10,
-    installRetries, // InstallRetries: installRetries = 5,
+    simRetries,
+    // simRetries: simRetries = 10,
+    installRetries,
+    // installRetries: installRetries = 5,
+    webdriverTimeoutMs,
+    // webdriverTimeoutMs: webdriverTimeoutMs = defaultWebdriverTimeoutMs,
 }: Args): Promise<Result> => {
     simRetries = simRetries || 10;
     installRetries = installRetries || 5;
+    webdriverTimeoutMs = webdriverTimeoutMs || defaultWebdriverTimeoutMs;
 
     let simulator;
     for (let i = 0; i < simRetries; i++) {
@@ -96,7 +104,11 @@ export default async ({
         }
     }
 
-    const wdAgent = await startWebDriver(simulator.UDID, port);
+    const wdAgent = await startWebDriver(
+      simulator.UDID,
+      port,
+      webdriverTimeoutMs
+    );
 
     const base = `http://localhost:${port}/`;
     const driver = wd.promiseChainRemote(base);
